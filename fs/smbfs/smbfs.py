@@ -244,6 +244,9 @@ class SMBFS(FS):
                 if share.type == share.DISK_TREE
         }
 
+    def __del__(self):
+        self.close()
+
     def close(self):  # noqa: D102
         if not self.isclosed():
             self._smb.close()
